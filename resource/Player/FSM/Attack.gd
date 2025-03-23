@@ -5,7 +5,7 @@ var is_attacking = false
 @export var attack_sound:AudioStream
 @export_range(1, 20, 0.5) var decelerate_speed : float = 5.0
 @onready var animation_attack:AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AnimationPlayer"
-
+@onready var hurt_box:HurtBox = $"../../Sprite2D/AttackHurtBox"
 
 func _ready() -> void:
 	# 设置优先级
@@ -27,6 +27,9 @@ func enter():
 	# 连接动画结束信号
 	animation_player.animation_finished.connect(EndAttack)
 	is_attacking = true
+	
+	await get_tree().create_timer(0.075).timeout
+	hurt_box.monitoring = true
 
 func do( _delta : float ):
 	# 动画结束 切换闲置
@@ -38,6 +41,7 @@ func do( _delta : float ):
 func exit():
 	# 断开连接
 	animation_player.animation_finished.disconnect(EndAttack)
+	hurt_box.monitoring = false
 
 func EndAttack( _newAnimName : String ):
 	is_attacking = false

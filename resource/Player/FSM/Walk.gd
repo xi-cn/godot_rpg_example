@@ -18,25 +18,8 @@ func is_motivated()->bool:
 	
 
 func enter():
-	var flip = false
-	# 更新角色方向 垂直优先
-	if vertical_dir > 0:
-		player.direction = "down"
-	elif vertical_dir < 0:
-		player.direction = "up"
-	elif horizontal_dir > 0:
-		player.direction = "side"
-	elif horizontal_dir < 0:
-		player.direction = "side"
-		flip = true
-	else:
-		return
-		
-	# 翻转动画
-	if flip:
-		sprite.scale.x = -1
-	else:
-		sprite.scale.x = 1
+	# 更新方向
+	player.update_direction(Vector2(horizontal_dir, vertical_dir))
 		
 	# 播放动画
 	animation_player.play("walk_"+player.direction)
@@ -71,9 +54,9 @@ func update_direction():
 	var v_dir = Input.get_action_strength("down") - Input.get_action_strength("up")
 	# 方向是否改变 垂直优先
 	var dir_changed = false
-	if v_dir != vertical_dir:
-		dir_changed = true
-	elif v_dir == 0 && h_dir != horizontal_dir:
+	
+	# 按下的方向案件改变
+	if horizontal_dir != h_dir || vertical_dir != v_dir:
 		dir_changed = true
 	
 	# 更新方向
