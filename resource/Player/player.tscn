@@ -478,11 +478,10 @@ _data = {
 radius = 18.0278
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -20)
+collision_mask = 273
 script = ExtResource("1_pmtbs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 20)
 shape = SubResource("CircleShape2D_0kswh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -491,6 +490,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
 texture = ExtResource("2_tmrnf")
 hframes = 16
 vframes = 3
