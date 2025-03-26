@@ -1,17 +1,17 @@
 [gd_scene load_steps=32 format=3 uid="uid://5cbce88okjed"]
 
-[ext_resource type="Script" path="res://resource/Player/player.gd" id="1_pmtbs"]
-[ext_resource type="Script" path="res://resource/Player/FSM/FSM.gd" id="2_ovvni"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/player.gd" id="1_r7tel"]
 [ext_resource type="Texture2D" uid="uid://dhmiw0pmkkyeq" path="res://resource/Player/Sprites/PlayerSprite02.png" id="2_tmrnf"]
-[ext_resource type="Script" path="res://resource/Player/FSM/Idle.gd" id="3_fyka4"]
 [ext_resource type="Texture2D" uid="uid://nmuu0lm0jfen" path="res://resource/Player/Sprites/AttackSprite01.png" id="3_ko54h"]
 [ext_resource type="Texture2D" uid="uid://cpywflkcf8e6j" path="res://resource/Player/Sprites/Shadow.png" id="3_w6y5e"]
-[ext_resource type="Script" path="res://resource/Player/FSM/Walk.gd" id="5_uputo"]
-[ext_resource type="Script" path="res://resource/Player/FSM/Attack.gd" id="6_m85fk"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/player_state_machine.gd" id="6_smvps"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/player_idle_state.gd" id="7_i37pe"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/player_walk_state.gd" id="8_hqtye"]
 [ext_resource type="AudioStream" uid="uid://b02saptikikdq" path="res://resource/Player/Audio/SwordSwoosh.wav" id="8_lua0m"]
-[ext_resource type="Script" path="res://resource/Player/player_interaction_host.gd" id="10_pbxsy"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/player_attack_state.gd" id="9_ftfj5"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/player_interaction_host.gd" id="10_pbxsy"]
 [ext_resource type="PackedScene" uid="uid://dysdi3oaxxfiy" path="res://resource/GeneralNodes/HurtBox/hurt_box.tscn" id="10_yrt4w"]
-[ext_resource type="Script" path="res://resource/Player/player_camera.gd" id="11_edwlu"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/player_camera.gd" id="11_edwlu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kswh"]
 
@@ -29,6 +29,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/AttackHurtBox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pq0og"]
 resource_name = "attack_down"
@@ -44,6 +56,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [21, 23]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/AttackHurtBox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_dy2q0"]
@@ -61,6 +85,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [27, 29]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/AttackHurtBox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_oo8q0"]
 resource_name = "attack_up"
@@ -76,6 +112,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [24, 26]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/AttackHurtBox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_iv15i"]
@@ -479,7 +527,7 @@ radius = 18.0278
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 273
-script = ExtResource("1_pmtbs")
+script = ExtResource("1_r7tel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0kswh")
@@ -521,17 +569,17 @@ monitoring = false
 shape = SubResource("CircleShape2D_aeg66")
 debug_color = Color(0.953125, 0.0595703, 0.28994, 0.42)
 
-[node name="FSM" type="Node" parent="."]
-script = ExtResource("2_ovvni")
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("6_smvps")
 
-[node name="Idle" type="Node" parent="FSM"]
-script = ExtResource("3_fyka4")
+[node name="IdleState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_i37pe")
 
-[node name="Walk" type="Node" parent="FSM"]
-script = ExtResource("5_uputo")
+[node name="WalkState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_hqtye")
 
-[node name="Attack" type="Node" parent="FSM"]
-script = ExtResource("6_m85fk")
+[node name="AttackState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_ftfj5")
 attack_sound = ExtResource("8_lua0m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
