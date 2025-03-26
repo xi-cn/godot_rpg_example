@@ -4,15 +4,24 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 var direction:Vector2 = Vector2.DOWN
 var enemy:Enemy
+var invalunable:bool = false
+
+signal Damaged()
+signal Destroyed()
+
+@export var hp:int = 3
 
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var state_machine:EnemyStateMachine = $EnemyStateMachine
+@onready var hit_box:HitBox = $HitBox
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# 初始化状态机
 	state_machine.initialize(self)
+	# 连接受击信号
+	hit_box.Damaged.connect(take_damage)
 	pass # Replace with function body.
 
 
@@ -43,3 +52,11 @@ func animation_direction()->String:
 # 更新动画
 func update_animation(state:String):
 	animation_player.play(state + "_" + animation_direction())
+
+# 受伤
+func take_damage(_damage:int):
+	hp -= _damage
+	if hp > 0:
+		Damaged.emit()
+	else:
+		Destroyed.emit()

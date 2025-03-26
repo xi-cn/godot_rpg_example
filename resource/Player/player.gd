@@ -1,10 +1,12 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 # 方向
 var direction:String = "down"
 var vec_direction:Vector2 = Vector2.DOWN
 @onready var plaer_interaction_host:PlayerInteractionHost = $Interactions
 
+func _ready() -> void:
+	PlayerManager.player = self
 
 func update_direction(dir:Vector2):
 	# 什么都不做
