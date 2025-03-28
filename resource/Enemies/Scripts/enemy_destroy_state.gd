@@ -20,7 +20,7 @@ func do(_delta)->EnemyBaseState:
 func exit():
 	pass
 	
-func _on_enemy_destroyed():
+func _on_enemy_destroyed(hurt_box:HurtBox):
 	state_machine.change_state(self)
 
 func _on_animation_finished(_ani_name):

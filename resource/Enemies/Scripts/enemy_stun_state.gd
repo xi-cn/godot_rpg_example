@@ -1,11 +1,12 @@
 class_name EnemyStunState extends EnemyBaseState
 
 @export var ani_name = "stun"
-@export var retreat_speed:float = 50
+@export var knockback_speed:float = 50
 @export var speed_declay_rate = 2
 @export var next_state:EnemyBaseState
 
 var animation_finished:bool = false
+var knockback_direction:Vector2
 
 func init():
 	# 连接信号
@@ -19,8 +20,7 @@ func enter():
 	animation_finished = false
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 	
-	var _direction = -enemy.global_position.direction_to(PlayerManager.player.position)
-	enemy.velocity = _direction * retreat_speed
+	enemy.velocity = knockback_direction * knockback_speed
 	enemy.update_animation(ani_name)
 
 
@@ -35,7 +35,9 @@ func exit():
 	# 取消无敌状态
 	enemy.invalunable = false
 	
-func _on_enemy_damaged():
+func _on_enemy_damaged(hurt_box:HurtBox):
+	# 击退速度
+	knockback_direction = -enemy.global_position.direction_to(hurt_box.global_position)
 	state_machine.change_state(self)
 
 func _on_animation_finished(_ani_name):

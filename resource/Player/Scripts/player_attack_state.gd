@@ -14,6 +14,8 @@ var animation_finished:bool = false
 func enter():
 	animation_finished = false
 	player.update_animation(ani_name)
+	# 开启攻击检测
+	player.hurt_box.monitoring = true
 	# 播放动画
 	player.animation_player.animation_finished.connect(_on_animation_finished)
 	attack_effect_animation_player.play(ani_name + "_" + player.animation_direction())
@@ -39,6 +41,8 @@ func do(_delata)->PlayerBaseState:
 		return idle_state
 
 func exit():
+	# 关闭攻击检测
+	player.hurt_box.monitoring = false
 	player.animation_player.animation_finished.disconnect(_on_animation_finished)
 
 func handle_input(event:InputEvent)->PlayerBaseState:

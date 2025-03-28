@@ -6,10 +6,10 @@ var direction:Vector2 = Vector2.DOWN
 var enemy:Enemy
 var invalunable:bool = false
 
-signal Damaged()
-signal Destroyed()
+signal Damaged(hurt_box:HurtBox)
+signal Destroyed(hurt_box:HurtBox)
 
-@export var hp:int = 3
+@export var hp:int = 30
 
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
@@ -54,9 +54,11 @@ func update_animation(state:String):
 	animation_player.play(state + "_" + animation_direction())
 
 # 受伤
-func take_damage(_damage:int):
-	hp -= _damage
+func take_damage(hurt_box:HurtBox):
+	if invalunable:
+		return
+	hp -= hurt_box.damage
 	if hp > 0:
-		Damaged.emit()
+		Damaged.emit(hurt_box)
 	else:
-		Destroyed.emit()
+		Destroyed.emit(hurt_box)
