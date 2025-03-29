@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1481dmdh2126"]
+
+[ext_resource type="Script" path="res://resource/Levels/Scripts/level_tranistion.gd" id="1_sbqih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brb0k"]
+resource_local_to_scene = true
+size = Vector2(32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k3l5l"]
+load_path = "res://.godot/imported/PlayerSprite02.png-5aebaefc1e22d96e7d08c732fbb2642a.ctex"
+
+[node name="LevelTransition" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_sbqih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_brb0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.144196, 0.396752, 0.878906, 1)
+texture = SubResource("CompressedTexture2D_k3l5l")
+offset = Vector2(0, -20)
+hframes = 16
+vframes = 3

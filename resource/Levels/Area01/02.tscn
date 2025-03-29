@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://s2ew8bfkannu"]
+
+[ext_resource type="Script" path="res://resource/Levels/Scripts/level.gd" id="1_e1tr6"]
+[ext_resource type="PackedScene" uid="uid://gaui56hlma7h" path="res://resource/Tile Maps/Area01/area01_02.tscn" id="1_mftqu"]
+[ext_resource type="PackedScene" uid="uid://d1481dmdh2126" path="res://resource/Levels/level_transition.tscn" id="3_osvjl"]
+
+[node name="02" type="Node2D"]
+script = ExtResource("1_e1tr6")
+
+[node name="Area0102" parent="." instance=ExtResource("1_mftqu")]
+
+[node name="TranstionArea" type="Node" parent="."]
+
+[node name="LevelTransition" parent="TranstionArea" instance=ExtResource("3_osvjl")]
+position = Vector2(-16, 576)
+level = "res://resource/Levels/Area01/01.tscn"
+teleport_target_offset = Vector2(2, 1)
+transition_size = Vector2(1, 4)

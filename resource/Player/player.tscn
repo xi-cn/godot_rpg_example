@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bn5js116fj2m8" path="res://resource/GeneralNodes/HitBox/hit_box.tscn" id="13_bwdba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kswh"]
+radius = 9.0
 
 [sub_resource type="Animation" id="Animation_vkrk1"]
 length = 0.001
@@ -683,6 +684,7 @@ collision_mask = 273
 script = ExtResource("1_r7tel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_0kswh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

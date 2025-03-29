@@ -11,5 +11,4 @@ func get_tilemap_bound()->Array[Vector2]:
 		Vector2(get_used_rect().position * rendering_quadrant_size),
 		Vector2(get_used_rect().end * rendering_quadrant_size)
 	]
-	
 	return bounds
