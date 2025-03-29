@@ -7,7 +7,7 @@ var animation_finished:bool = false
 @onready var walk_state:PlayerBaseState = $"../WalkState"
 @onready var attack_effect_animation_player:AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AnimationPlayer"
 
-@export var speed_declay_rate = 5
+@export var speed_declay_rate = 10
 @export var attack_sound:AudioStream
 
 

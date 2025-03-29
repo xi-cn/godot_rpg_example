@@ -9,7 +9,7 @@ var invalunable:bool = false
 signal Damaged(hurt_box:HurtBox)
 signal Destroyed(hurt_box:HurtBox)
 
-@export var hp:int = 30
+@export var hp:int = 5
 
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
@@ -57,7 +57,7 @@ func update_animation(state:String):
 func take_damage(hurt_box:HurtBox):
 	if invalunable:
 		return
-	hp -= hurt_box.damage
+	hp += hurt_box.damage
 	if hp > 0:
 		Damaged.emit(hurt_box)
 	else:

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 LevelManager="*res://resource/00_Globals/GlobalLevelManager.gd"
 PlayerManager="*res://resource/00_Globals/GlobalPlayerManager.gd"
+PlayerHudManager="*res://resource/GUI/PlayerHud/PlayerHud.tscn"
 
 [dotnet]
 

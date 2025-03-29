@@ -5,6 +5,7 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var cardinal_direction:Vector2
 var direction:Vector2 = Vector2.DOWN
 var invalunable:bool =false
+var hp:int
 
 signal Damaged(hurt_box:HurtBox)
 
@@ -15,10 +16,11 @@ signal Damaged(hurt_box:HurtBox)
 @onready var hit_box:HitBox = $HitBox
 @onready var hurt_box:HurtBox = $Sprite2D/AttackHurtBox
 
-@export var hp:int = 100
+@export var max_hp:int = 11
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hp = max_hp
 	PlayerManager.player = self
 	# 初始化状态机
 	state_machine.initialize(self)
@@ -26,6 +28,8 @@ func _ready() -> void:
 	hit_box.Damaged.connect(_on_damaged)
 	# 关闭攻击检测
 	hurt_box.monitoring = false
+	# 设置hud ui
+	PlayerHudManager.update_hp(hp, max_hp)
 	
 
 
@@ -67,6 +71,7 @@ func update_animation(state):
 func _on_damaged(hurt_box:HurtBox):
 	if invalunable:
 		return
-	hp -= hurt_box.damage
+	hp = clampi(hp + hurt_box.damage, 0, max_hp)
+	PlayerHudManager.update_hp(hp, max_hp)
 	if hp > 0:
 		Damaged.emit(hurt_box)
