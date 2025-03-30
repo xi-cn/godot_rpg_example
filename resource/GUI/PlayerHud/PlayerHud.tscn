@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://resource/GUI/PlayerHud/Scripts/player_hud.gd" id="1_sbsnb"]
 
 [node name="PlayerHud" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_sbsnb")
 
 [node name="Control" type="Control" parent="."]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
 position = Vector2(51, 12)
