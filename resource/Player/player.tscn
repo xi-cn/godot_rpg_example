@@ -742,7 +742,7 @@ script = ExtResource("12_cip2n")
 next_state = NodePath("../IdleState")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 script = ExtResource("11_edwlu")
 
 [node name="Audio" type="Node2D" parent="."]

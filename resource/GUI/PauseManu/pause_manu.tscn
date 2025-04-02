@@ -1,12 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbiwvhjqhq6bt"]
+[gd_scene load_steps=8 format=3 uid="uid://dbiwvhjqhq6bt"]
 
 [ext_resource type="Script" path="res://resource/GUI/PauseManu/pause_manu.gd" id="1_qo5wd"]
+[ext_resource type="Texture2D" uid="uid://b5okauvxnv2fw" path="res://resource/Items/Sprites/items.png" id="2_kdeum"]
+[ext_resource type="PackedScene" uid="uid://b0y3l7hq7gpji" path="res://resource/GUI/PauseManu/Inventory/inventory_slot.tscn" id="3_6dbje"]
+[ext_resource type="Script" path="res://resource/GUI/PauseManu/Inventory/Scripts/inventory_ui.gd" id="3_8dpkc"]
+[ext_resource type="Resource" uid="uid://cl2nvantlv883" path="res://resource/GUI/PauseManu/Inventory/inventory.tres" id="4_2q4oe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nynx3"]
+atlas = ExtResource("2_kdeum")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vcc30"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_nynx3")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
 
 [node name="PauseManu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_qo5wd")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,42 +42,79 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.196078, 0.196078, 0.196078, 0.466667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 157.0
+offset_right = 283.0
+offset_bottom = 245.0
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxTexture_vcc30")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_8dpkc")
+inventory_data = ExtResource("4_2q4oe")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_6dbje")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_6dbje")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_6dbje")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_6dbje")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_6dbje")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_6dbje")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -65.0
-offset_right = 130.0
-offset_bottom = 65.0
+offset_left = -483.0
+offset_top = 144.0
+offset_right = -313.0
+offset_bottom = 248.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button_Save" type="Button" parent="VBoxContainer"]
+[node name="Button_Save" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Save"
 
-[node name="Button_Load" type="Button" parent="VBoxContainer"]
+[node name="Button_Load" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Load
 "
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -62.5
-offset_top = -148.0
-offset_right = 62.5
-offset_bottom = -106.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 94.0
+offset_right = 214.0
+offset_bottom = 136.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "[Paused]"
+
+[node name="ItemDescription" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 363.0
+offset_right = 474.0
+offset_bottom = 386.0
+text = "description"
+autowrap_mode = 2

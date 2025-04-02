@@ -1,15 +1,18 @@
 extends CanvasLayer
 
+signal show()
+signal hidden()
 
 var is_paused:bool = false
 
-@onready var save_button:Button = $VBoxContainer/Button_Save
-@onready var load_button:Button = $VBoxContainer/Button_Load
-
+@onready var save_button:Button = $Control/VBoxContainer/Button_Save
+@onready var load_button:Button = $Control/VBoxContainer/Button_Load
+@onready var item_description:Label = $Control/ItemDescription
 
 func _ready() -> void:
 	is_paused = false
 	visible = false
+	item_description.text = ""
 	# 连接按钮点击事件
 	save_button.pressed.connect(save_scene)
 	load_button.pressed.connect(load_scene)
@@ -32,7 +35,7 @@ func show_pause_manu():
 	get_tree().paused = true
 	visible = true
 	is_paused = true
-	save_button.grab_focus()
+	show.emit()
 	
 
 # 隐藏暂停界面
@@ -40,6 +43,7 @@ func hide_pause_manu():
 	visible = false
 	is_paused = false
 	get_tree().paused = false
+	hidden.emit()
 
 # 保存场景
 func save_scene():
@@ -50,3 +54,8 @@ func save_scene():
 func load_scene():
 	SaveManager.load_game()
 	hide_pause_manu()
+
+# 设置描述文本
+func set_description(text:String):
+	item_description.text = text
+	
