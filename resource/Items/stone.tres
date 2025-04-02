@@ -5,10 +5,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2y73"]
 atlas = ExtResource("2_on6vd")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(63, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_7veok")
 name = "stone"
 description = "try to eat"
 texture = SubResource("AtlasTexture_q2y73")
+max_num_one_grid = 64

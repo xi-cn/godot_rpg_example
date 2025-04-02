@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch6xyk1we6ync"]
+[gd_scene load_steps=11 format=3 uid="uid://ch6xyk1we6ync"]
 
 [ext_resource type="PackedScene" uid="uid://din4t2fkvj0lm" path="res://resource/Tile Maps/Area01/area01_01.tscn" id="1_fb0i8"]
 [ext_resource type="Script" path="res://resource/Levels/Scripts/level.gd" id="1_gfu3r"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://d1481dmdh2126" path="res://resource/Levels/level_transition.tscn" id="3_qd4jq"]
 [ext_resource type="PackedScene" uid="uid://dktadhjoy6a0g" path="res://resource/Ornament/Plants/Plants.tscn" id="4_y26lw"]
 [ext_resource type="PackedScene" uid="uid://byxvbkcerf7af" path="res://resource/Enemies/Slime/Slime.tscn" id="6_c1e8r"]
+[ext_resource type="PackedScene" uid="uid://cqhuw1b5j2jpq" path="res://resource/Items/drop_item.tscn" id="7_gba6a"]
+[ext_resource type="Resource" uid="uid://b3hxgl45av1lk" path="res://resource/Items/gem.tres" id="8_v8xj1"]
+[ext_resource type="Resource" uid="uid://shtjtj7vsqce" path="res://resource/Items/potion.tres" id="9_625ng"]
+[ext_resource type="Resource" uid="uid://bsy57uiecuh6j" path="res://resource/Items/stone.tres" id="10_gl25h"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_gfu3r")
@@ -46,3 +50,15 @@ position = Vector2(519, 651)
 
 [node name="Slime5" parent="." instance=ExtResource("6_c1e8r")]
 position = Vector2(539, 199)
+
+[node name="DropItem" parent="." instance=ExtResource("7_gba6a")]
+position = Vector2(929, 516)
+item = ExtResource("8_v8xj1")
+
+[node name="DropItem2" parent="." instance=ExtResource("7_gba6a")]
+position = Vector2(912, 556)
+item = ExtResource("9_625ng")
+
+[node name="DropItem3" parent="." instance=ExtResource("7_gba6a")]
+position = Vector2(998, 487)
+item = ExtResource("10_gl25h")

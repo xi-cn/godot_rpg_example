@@ -8,6 +8,8 @@ var is_paused:bool = false
 @onready var save_button:Button = $Control/VBoxContainer/Button_Save
 @onready var load_button:Button = $Control/VBoxContainer/Button_Load
 @onready var item_description:Label = $Control/ItemDescription
+@onready var item_container:InventoryUi = $Control/PanelContainer/GridContainer
+@onready var audio_player:AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	is_paused = false
@@ -58,4 +60,12 @@ func load_scene():
 # 设置描述文本
 func set_description(text:String):
 	item_description.text = text
+
+# 捡起凋落物
+func pick_up_item(item:ItemData)->bool:
+	return item_container.inventory_data.add_item(item)
 	
+# 播放音效
+func play_sound(stream:AudioStream):
+	audio_player.stream = stream
+	audio_player.play()

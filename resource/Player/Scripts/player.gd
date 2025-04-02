@@ -68,20 +68,26 @@ func animation_direction():
 func update_animation(state):
 	animation_player.play(state + "_" + animation_direction())
 
+# 受击
 func _on_damaged(hurt_box:HurtBox):
 	# 无敌状态
 	if invalunable:
 		return
-	# 更新血量和最大血量
-	var _hp:int = clampi(hp + hurt_box.damage, 0, max_hp)
-	var _max_hp:int = max_hp
-	_update_player_hp(_hp, _max_hp)
-	
+	_update_hp(hurt_box.damage)
 	# 受伤动画
 	if hp > 0:
 		Damaged.emit(hurt_box)
+	
 
-# 更新hp
+# 更新血量
+func _update_hp(delta:int):
+	# 更新血量和最大血量
+	var _hp:int = clampi(hp + delta, 0, max_hp)
+	var _max_hp:int = max_hp
+	_update_player_hp(_hp, _max_hp)
+	
+
+# 更新hp及ui
 func _update_player_hp(_hp, _max_hp):
 	hp = _hp
 	max_hp = _max_hp

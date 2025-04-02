@@ -23,4 +23,4 @@ quantity = 6
 
 [resource]
 script = ExtResource("1_ctsew")
-slots = Array[ExtResource("2_y5niq")]([SubResource("Resource_02j07"), SubResource("Resource_m52tb"), SubResource("Resource_k7obn")])
+slots = Array[ExtResource("2_y5niq")]([SubResource("Resource_02j07"), SubResource("Resource_m52tb"), SubResource("Resource_k7obn"), null, null, null, null, null, null, null])

@@ -23,6 +23,7 @@ texture_margin_bottom = 14.0
 
 [node name="PauseManu" type="CanvasLayer"]
 process_mode = 3
+visible = false
 script = ExtResource("1_qo5wd")
 
 [node name="Control" type="Control" parent="."]
@@ -118,3 +119,5 @@ offset_right = 474.0
 offset_bottom = 386.0
 text = "description"
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
