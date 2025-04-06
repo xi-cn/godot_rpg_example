@@ -12,6 +12,8 @@ func enter():
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 	enemy.velocity = Vector2.ZERO
 	enemy.update_animation(ani_name)
+	# 添加掉落物
+	enemy.throw_items()
 
 
 func do(_delta)->EnemyBaseState:
@@ -24,4 +26,4 @@ func _on_enemy_destroyed(hurt_box:HurtBox):
 	state_machine.change_state(self)
 
 func _on_animation_finished(_ani_name):
-	enemy.queue_free()
+	enemy.call_deferred("queue_free")

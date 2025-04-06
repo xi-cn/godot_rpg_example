@@ -1,8 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://byxvbkcerf7af"]
+[gd_scene load_steps=37 format=3 uid="uid://byxvbkcerf7af"]
 
 [ext_resource type="Texture2D" uid="uid://d2a31cu7deaon" path="res://resource/Enemies/Slime/Sprites/Slime.png" id="1_6snq6"]
 [ext_resource type="Script" path="res://resource/Enemies/Scripts/enemy.gd" id="1_r2qn0"]
 [ext_resource type="Texture2D" uid="uid://cpywflkcf8e6j" path="res://resource/Player/Sprites/Shadow.png" id="1_r0528"]
+[ext_resource type="Script" path="res://resource/Items/Scripts/drop_item.gd" id="2_encod"]
+[ext_resource type="Resource" uid="uid://b3hxgl45av1lk" path="res://resource/Items/gem.tres" id="3_iiwll"]
 [ext_resource type="Script" path="res://resource/Enemies/Scripts/enemy_state_machine.gd" id="3_mkc34"]
 [ext_resource type="AudioStream" uid="uid://dnpih4rmuyf45" path="res://resource/Enemies/Slime/Audio/hit_01.wav" id="4_4528d"]
 [ext_resource type="AudioStream" uid="uid://b4pi71g56rxox" path="res://resource/Enemies/Slime/Audio/hit_00.wav" id="5_mpwk5"]
@@ -13,6 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://cujakgljtnerw" path="res://resource/Enemies/Slime/Sprites/DestroySmoke.png" id="9_cibdj"]
 [ext_resource type="Script" path="res://resource/Enemies/Scripts/enemy_destroy_state.gd" id="10_7qsmd"]
 [ext_resource type="PackedScene" uid="uid://dysdi3oaxxfiy" path="res://resource/GeneralNodes/HurtBox/hurt_box.tscn" id="13_umjw5"]
+
+[sub_resource type="Resource" id="Resource_7h2lk"]
+script = ExtResource("2_encod")
+item = ExtResource("3_iiwll")
+probability = 80.0
+min_amount = 1
+max_amount = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7rb7"]
 radius = 13.0
@@ -1157,6 +1166,8 @@ height = 24.0
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_r2qn0")
+hp = 1
+drop_items = Array[ExtResource("2_encod")]([SubResource("Resource_7h2lk")])
 
 [node name="HitBox" parent="." instance=ExtResource("7_78043")]
 visible = false

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1481dmdh2126" path="res://resource/Levels/level_transition.tscn" id="3_qd4jq"]
 [ext_resource type="PackedScene" uid="uid://dktadhjoy6a0g" path="res://resource/Ornament/Plants/Plants.tscn" id="4_y26lw"]
 [ext_resource type="PackedScene" uid="uid://byxvbkcerf7af" path="res://resource/Enemies/Slime/Slime.tscn" id="6_c1e8r"]
-[ext_resource type="PackedScene" uid="uid://cqhuw1b5j2jpq" path="res://resource/Items/drop_item.tscn" id="7_gba6a"]
+[ext_resource type="PackedScene" uid="uid://cqhuw1b5j2jpq" path="res://resource/Items/pick_item.tscn" id="7_gba6a"]
 [ext_resource type="Resource" uid="uid://b3hxgl45av1lk" path="res://resource/Items/gem.tres" id="8_v8xj1"]
 [ext_resource type="Resource" uid="uid://shtjtj7vsqce" path="res://resource/Items/potion.tres" id="9_625ng"]
 [ext_resource type="Resource" uid="uid://bsy57uiecuh6j" path="res://resource/Items/stone.tres" id="10_gl25h"]
@@ -43,13 +43,13 @@ position = Vector2(-9, 488)
 position = Vector2(244, 324)
 
 [node name="Slime3" parent="." instance=ExtResource("6_c1e8r")]
-position = Vector2(630, 400)
+position = Vector2(1130, 416)
 
 [node name="Slime4" parent="." instance=ExtResource("6_c1e8r")]
 position = Vector2(519, 651)
 
 [node name="Slime5" parent="." instance=ExtResource("6_c1e8r")]
-position = Vector2(539, 199)
+position = Vector2(1126, 318)
 
 [node name="DropItem" parent="." instance=ExtResource("7_gba6a")]
 position = Vector2(929, 516)

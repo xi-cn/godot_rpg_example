@@ -5,16 +5,19 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var direction:Vector2 = Vector2.DOWN
 var enemy:Enemy
 var invalunable:bool = false
+var pick_item_scene = preload("res://resource/Items/pick_item.tscn")
 
 signal Damaged(hurt_box:HurtBox)
 signal Destroyed(hurt_box:HurtBox)
 
 @export var hp:int = 5
+@export var drop_items:Array[DropItem]
 
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var state_machine:EnemyStateMachine = $EnemyStateMachine
 @onready var hit_box:HitBox = $HitBox
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,3 +65,15 @@ func take_damage(hurt_box:HurtBox):
 		Damaged.emit(hurt_box)
 	else:
 		Destroyed.emit(hurt_box)
+
+# 死亡掉落物
+func throw_items():
+	for item in drop_items:
+		var count = item.get_count()
+		for i in range(count):
+			var new_item = pick_item_scene.instantiate() as PickItem
+			new_item.item = load(item.item.resource_path)
+			new_item.global_position = self.global_position
+			new_item.velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * randi_range(200, 400)
+			print(new_item.velocity)
+			get_parent().add_child(new_item)
