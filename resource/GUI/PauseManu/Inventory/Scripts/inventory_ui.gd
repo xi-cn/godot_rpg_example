@@ -43,3 +43,9 @@ func _on_item_used(item_index:int):
 	clear_inventory()
 	await get_tree().process_frame
 	update_inventory()
+
+# 加载物品
+func load_from_json(json_data):
+	inventory_data.load_from_json(json_data)
+	clear_inventory()
+	update_inventory()

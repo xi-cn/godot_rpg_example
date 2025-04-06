@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bsy57uiecuh6j"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://bsy57uiecuh6j"]
 
 [ext_resource type="Script" path="res://resource/Items/Scripts/item_data.gd" id="1_7veok"]
+[ext_resource type="Script" path="res://resource/Items/ItemEffect/Scripts/item_effect.gd" id="1_vx45d"]
 [ext_resource type="Texture2D" uid="uid://b5okauvxnv2fw" path="res://resource/Items/Sprites/items.png" id="2_on6vd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2y73"]
@@ -13,3 +14,4 @@ name = "stone"
 description = "try to eat"
 texture = SubResource("AtlasTexture_q2y73")
 max_num_one_grid = 64
+effects = Array[ExtResource("1_vx45d")]([])

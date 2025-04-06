@@ -17,3 +17,28 @@ func add_item(item:ItemData)->bool:
 			return true
 	
 	return false
+
+
+# 获取库存数据的json格式
+func get_json_data():
+	var result = []
+	for slot in slots:
+		if slot == null:
+			result.append(null)
+		else:
+			result.append(slot.parse_slot_to_json())
+	return result
+	
+# 加载json数据到库存数据
+func load_from_json(load_data:Dictionary):
+	var items = load_data.items
+	slots.clear()
+	slots.resize(items.size())
+	for i in range(slots.size()):
+		if items[i] == null or items[i].item == null:
+			continue
+		var new_slot:SlotData = SlotData.new()
+		new_slot.item = load(items[i].item)
+		new_slot.quantity = items[i].quantity
+
+		slots[i] = new_slot

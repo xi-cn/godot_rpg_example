@@ -41,6 +41,8 @@ func load_game():
 	LevelManager.load_scene(
 		current_save
 	)
+	# 加载道具信息
+	PauseManu.item_container.load_from_json(current_save)
 
 # 更新游戏状态到当前保存文件中
 func _update_status_to_file():
@@ -55,3 +57,6 @@ func _update_status_to_file():
 	for c in get_tree().root.get_children():
 		if c is Level:
 			current_save.scene_path = c.scene_file_path
+			
+	# 道具信息
+	current_save.items = PauseManu.item_container.inventory_data.get_json_data()

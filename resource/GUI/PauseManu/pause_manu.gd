@@ -69,3 +69,7 @@ func pick_up_item(item:ItemData)->bool:
 func play_sound(stream:AudioStream):
 	audio_player.stream = stream
 	audio_player.play()
+	
+# 加载道具
+func load_items(data:Dictionary):
+	pass
