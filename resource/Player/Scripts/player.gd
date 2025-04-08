@@ -8,6 +8,7 @@ var invalunable:bool =false
 var hp:int
 
 signal Damaged(hurt_box:HurtBox)
+signal Interacted()
 
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
@@ -15,6 +16,7 @@ signal Damaged(hurt_box:HurtBox)
 @onready var audio:AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
 @onready var hit_box:HitBox = $HitBox
 @onready var hurt_box:HurtBox = $Sprite2D/AttackHurtBox
+@onready var interaction:PlayerInteractionHost = $Interactions
 
 @export var max_hp:int = 11
 
@@ -54,6 +56,8 @@ func set_direction(dir:Vector2)->bool:
 		sprite.scale.x = -1
 	else:
 		sprite.scale.x = 1
+	# 更新交互区域方向
+	interaction.update_direction(direction)
 		
 	return true
 

@@ -26,5 +26,7 @@ func handle_input(event:InputEvent)->PlayerBaseState:
 	# 点击攻击
 	if event.is_action_pressed("attack"):
 		return attack_state
+	if event.is_action_pressed("interact"):
+		player.Interacted.emit()
 	return null
 	

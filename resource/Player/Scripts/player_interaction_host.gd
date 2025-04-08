@@ -18,4 +18,5 @@ func update_direction(dir:Vector2)->void:
 			rotation_degrees = -90
 		_:
 			rotation_degrees = 0
+	pass
 	

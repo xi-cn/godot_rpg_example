@@ -75,5 +75,4 @@ func throw_items():
 			new_item.item = load(item.item.resource_path)
 			new_item.global_position = self.global_position
 			new_item.velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * randi_range(200, 400)
-			print(new_item.velocity)
-			get_parent().add_child(new_item)
+			get_parent().call_deferred("add_child", new_item)

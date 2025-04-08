@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://5cbce88okjed"]
+[gd_scene load_steps=40 format=3 uid="uid://5cbce88okjed"]
 
 [ext_resource type="Script" path="res://resource/Player/Scripts/player.gd" id="1_r7tel"]
 [ext_resource type="AudioStream" uid="uid://btilheoukhcv5" path="res://resource/Player/Audio/hit_player.wav" id="2_luogg"]
@@ -676,6 +676,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_aeg66"]
 radius = 18.0278
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gma6y"]
+size = Vector2(20, 21)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_sws0y"]
 radius = 13.0
 
@@ -742,7 +745,7 @@ script = ExtResource("12_cip2n")
 next_state = NodePath("../IdleState")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 script = ExtResource("11_edwlu")
 
 [node name="Audio" type="Node2D" parent="."]
@@ -753,6 +756,15 @@ max_polyphony = 4
 [node name="Interactions" type="Node2D" parent="."]
 position = Vector2(0, 1)
 script = ExtResource("10_pbxsy")
+
+[node name="Area2D" type="Area2D" parent="Interactions"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_gma6y")
 
 [node name="HitBox" parent="." instance=ExtResource("13_bwdba")]
 collision_layer = 1
