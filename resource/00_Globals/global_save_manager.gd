@@ -60,3 +60,16 @@ func _update_status_to_file():
 			
 	# 道具信息
 	current_save.items = PauseManu.item_container.inventory_data.get_json_data()
+	
+
+# 向持久化数据中添加项
+func add_persistence(value):
+	if not check_persistence_exist(value):
+		current_save.persistence.append(value)
+
+# 查看持久化数据中是否存在项
+func check_persistence_exist(value:String):
+	if current_save.persistence.has(value):
+		return true
+	else:
+		return false

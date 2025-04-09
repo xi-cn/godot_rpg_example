@@ -68,3 +68,13 @@ item = ExtResource("10_gl25h")
 position = Vector2(925, 422)
 item = ExtResource("9_625ng")
 quantity = 10
+
+[node name="TreasureChest2" parent="." instance=ExtResource("11_vnvky")]
+position = Vector2(850, 466)
+item = ExtResource("9_625ng")
+quantity = 10
+
+[node name="TreasureChest3" parent="." instance=ExtResource("11_vnvky")]
+position = Vector2(1037, 409)
+item = ExtResource("9_625ng")
+quantity = 10

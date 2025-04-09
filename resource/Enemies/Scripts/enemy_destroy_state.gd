@@ -2,6 +2,8 @@ class_name EnemyDestroyState extends EnemyBaseState
 
 @export var ani_name = "destroy"
 
+@onready var hurt_box:HurtBox = $"../../HurtBox"
+@onready var collision_shape:CollisionShape2D = $"../../CollisionShape2D"
 
 func init():
 	# 连接信号
@@ -12,6 +14,9 @@ func enter():
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 	enemy.velocity = Vector2.ZERO
 	enemy.update_animation(ani_name)
+	# 禁用攻击箱和碰撞箱
+	hurt_box.monitoring = false
+	collision_shape.queue_free()
 	# 添加掉落物
 	enemy.throw_items()
 

@@ -67,5 +67,4 @@ func load_scene (
 	
 	get_tree().paused = false
 	
-	
-	
+	level_loaded.emit()
