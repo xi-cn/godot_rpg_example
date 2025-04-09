@@ -17,6 +17,7 @@ signal Destroyed(hurt_box:HurtBox)
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var state_machine:EnemyStateMachine = $EnemyStateMachine
 @onready var hit_box:HitBox = $HitBox
+@onready var vision_area:VisionArea = $VisionArea
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,11 +38,17 @@ func _physics_process(_delta: float) -> void:
 	
 # 设置方向
 func set_direction(id:int):
-	direction = DIR_4[id]
+	var new_direction = DIR_4[id]
+	if direction == new_direction:
+		return false
+	direction = new_direction
 	if direction == Vector2.LEFT:
 		sprite.scale.x = -1
 	else:
 		sprite.scale.x = 1
+	# 设置视角旋转
+	vision_area.update_direction(direction)
+	return true
 		
 # 获取动画方向
 func animation_direction()->String:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://byxvbkcerf7af"]
+[gd_scene load_steps=38 format=3 uid="uid://byxvbkcerf7af"]
 
 [ext_resource type="Texture2D" uid="uid://d2a31cu7deaon" path="res://resource/Enemies/Slime/Sprites/Slime.png" id="1_6snq6"]
 [ext_resource type="Script" path="res://resource/Enemies/Scripts/enemy.gd" id="1_r2qn0"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cujakgljtnerw" path="res://resource/Enemies/Slime/Sprites/DestroySmoke.png" id="9_cibdj"]
 [ext_resource type="Script" path="res://resource/Enemies/Scripts/enemy_destroy_state.gd" id="10_7qsmd"]
 [ext_resource type="PackedScene" uid="uid://dysdi3oaxxfiy" path="res://resource/GeneralNodes/HurtBox/hurt_box.tscn" id="13_umjw5"]
+[ext_resource type="PackedScene" uid="uid://canhelugajfsr" path="res://resource/Enemies/vision_area.tscn" id="16_y0x8j"]
 
 [sub_resource type="Resource" id="Resource_7h2lk"]
 script = ExtResource("2_encod")
@@ -1240,3 +1241,5 @@ position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_p24da")
 debug_color = Color(1, 0, 0, 0.42)
+
+[node name="VisionArea" parent="." instance=ExtResource("16_y0x8j")]
