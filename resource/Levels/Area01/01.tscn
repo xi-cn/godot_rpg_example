@@ -35,6 +35,12 @@ level = "res://resource/Levels/Area01/03.tscn"
 teleport_target_offset = Vector2(0, -2)
 transition_size = Vector2(3, 1)
 
+[node name="LevelTransition3" parent="TranstionArea" instance=ExtResource("3_qd4jq")]
+position = Vector2(944, -18)
+level = "res://resource/Levels/dungeon/01.tscn"
+teleport_target_offset = Vector2(0, 4)
+transition_size = Vector2(2, 1)
+
 [node name="Plants" parent="." instance=ExtResource("4_y26lw")]
 position = Vector2(310, 913)
 
@@ -54,15 +60,15 @@ position = Vector2(519, 651)
 position = Vector2(1126, 318)
 
 [node name="DropItem" parent="." instance=ExtResource("7_gba6a")]
-position = Vector2(929, 516)
+position = Vector2(917.458, 499.865)
 item = ExtResource("8_v8xj1")
 
 [node name="DropItem2" parent="." instance=ExtResource("7_gba6a")]
-position = Vector2(912, 556)
+position = Vector2(912.619, 559.031)
 item = ExtResource("9_625ng")
 
 [node name="DropItem3" parent="." instance=ExtResource("7_gba6a")]
-position = Vector2(1001.62, 482.528)
+position = Vector2(1015.11, 473.059)
 item = ExtResource("10_gl25h")
 
 [node name="TreasureChest" parent="." instance=ExtResource("11_vnvky")]

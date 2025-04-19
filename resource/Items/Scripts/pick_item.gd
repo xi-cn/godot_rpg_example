@@ -24,7 +24,7 @@ func _ready() -> void:
 
 # 更新图片材质
 func update_texture(value:ItemData):
-	if not sprite2d:
+	if sprite2d == null:
 		sprite2d = $Sprite2D
 	sprite2d.texture = value.texture
 

@@ -1,28 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7q8f21meq3l0"]
+[gd_scene load_steps=7 format=3 uid="uid://c7q8f21meq3l0"]
 
 [ext_resource type="Script" path="res://resource/Levels/Scripts/level.gd" id="1_23xxp"]
-[ext_resource type="PackedScene" uid="uid://cgjt1mvkvbp1k" path="res://resource/Tile Maps/grass-01.tscn" id="2_wujse"]
-[ext_resource type="PackedScene" uid="uid://dktadhjoy6a0g" path="res://resource/Ornament/Plants/Plants.tscn" id="3_8xa2x"]
-[ext_resource type="PackedScene" uid="uid://byxvbkcerf7af" path="res://resource/Enemies/Slime/Slime.tscn" id="4_1wrj5"]
+[ext_resource type="PackedScene" uid="uid://btu2tilcy4nwn" path="res://resource/Tile Maps/Dungeon/dungeon_01.tscn" id="3_7iuud"]
+[ext_resource type="PackedScene" uid="uid://bu486dmn21ewx" path="res://resource/Interactions/dungeon/pressure_plate.tscn" id="4_0giup"]
 [ext_resource type="PackedScene" uid="uid://drw1i4r6audx" path="res://resource/Levels/player_spawn.tscn" id="4_4jf3i"]
+[ext_resource type="PackedScene" uid="uid://bb7cl86jaq5k1" path="res://resource/Interactions/dungeon/barred_door.tscn" id="5_actqf"]
+[ext_resource type="PackedScene" uid="uid://h2jjkgduhaw0" path="res://resource/Interactions/dungeon/pushable_statue.tscn" id="6_d238p"]
 
 [node name="test" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_23xxp")
 
-[node name="Grass-01" parent="." instance=ExtResource("2_wujse")]
-
-[node name="Plants" parent="." instance=ExtResource("3_8xa2x")]
-position = Vector2(494, 296)
-
-[node name="Plants2" parent="." instance=ExtResource("3_8xa2x")]
-position = Vector2(555, 295)
-
-[node name="Plants3" parent="." instance=ExtResource("3_8xa2x")]
-position = Vector2(497, 362)
-
-[node name="Slime" parent="." instance=ExtResource("4_1wrj5")]
-position = Vector2(609, 43)
-
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_4jf3i")]
-position = Vector2(619, 245)
+position = Vector2(297, 207)
+
+[node name="Dungeon01" parent="." instance=ExtResource("3_7iuud")]
+
+[node name="PressurePlate" parent="." instance=ExtResource("4_0giup")]
+position = Vector2(240, 127)
+
+[node name="BarredDoor" parent="." instance=ExtResource("5_actqf")]
+position = Vector2(352, 16)
+
+[node name="PushableStatue" parent="." instance=ExtResource("6_d238p")]
+position = Vector2(297, 131)
+
+[connection signal="plate_activaed" from="PressurePlate" to="BarredDoor" method="_on_pressure_plate_plate_activaed"]
+[connection signal="plate_deactivaed" from="PressurePlate" to="BarredDoor" method="_on_pressure_plate_plate_deactivaed"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://h2jjkgduhaw0"]
+
+[ext_resource type="Script" path="res://resource/Interactions/dungeon/Scripts/pushable_status.gd" id="1_eqvbg"]
+[ext_resource type="Texture2D" uid="uid://bvlw7bk5olmdc" path="res://resource/Interactions/dungeon/dungeon_props.png" id="1_yih7i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic8oe"]
+size = Vector2(30, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h25nb"]
+atlas = ExtResource("1_yih7i")
+region = Rect2(385, 0, 31, 48)
+
+[node name="PushableStatue" type="RigidBody2D"]
+collision_layer = 17
+collision_mask = 276
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_eqvbg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_ic8oe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+texture = SubResource("AtlasTexture_h25nb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

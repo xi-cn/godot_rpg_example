@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://5cbce88okjed"]
+[gd_scene load_steps=42 format=3 uid="uid://5cbce88okjed"]
 
 [ext_resource type="Script" path="res://resource/Player/Scripts/player.gd" id="1_r7tel"]
 [ext_resource type="AudioStream" uid="uid://btilheoukhcv5" path="res://resource/Player/Audio/hit_player.wav" id="2_luogg"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://resource/Player/Scripts/player_camera.gd" id="11_edwlu"]
 [ext_resource type="Script" path="res://resource/Player/Scripts/player_stun_state.gd" id="12_cip2n"]
 [ext_resource type="PackedScene" uid="uid://bn5js116fj2m8" path="res://resource/GeneralNodes/HitBox/hit_box.tscn" id="13_bwdba"]
+[ext_resource type="Script" path="res://resource/Player/Scripts/push_area.gd" id="15_vcb1x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kswh"]
 radius = 9.0
@@ -679,6 +680,9 @@ radius = 18.0278
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gma6y"]
 size = Vector2(20, 21)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43ha2"]
+size = Vector2(20, 13.75)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_sws0y"]
 radius = 13.0
 
@@ -689,6 +693,7 @@ script = ExtResource("1_r7tel")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_0kswh")
+debug_color = Color(1, 0.914063, 0, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -754,7 +759,7 @@ script = ExtResource("11_edwlu")
 max_polyphony = 4
 
 [node name="Interactions" type="Node2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, -4)
 script = ExtResource("10_pbxsy")
 
 [node name="Area2D" type="Area2D" parent="Interactions"]
@@ -765,6 +770,17 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_gma6y")
+
+[node name="PushArea" type="Area2D" parent="Interactions"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("15_vcb1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_43ha2")
+debug_color = Color(0.333594, 0.7, 0, 0.42)
 
 [node name="HitBox" parent="." instance=ExtResource("13_bwdba")]
 collision_layer = 1

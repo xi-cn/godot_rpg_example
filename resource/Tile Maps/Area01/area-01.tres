@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c0gfq1bvs3pbg"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c0gfq1bvs3pbg"]
 
 [ext_resource type="Texture2D" uid="uid://df7sqgbdbnbil" path="res://resource/Tile Maps/Sprites/Grass-01.png" id="1_g1m40"]
+[ext_resource type="Texture2D" uid="uid://p6xuoxeow0hc" path="res://resource/Tile Maps/Sprites/dungeon_entrance.png" id="2_k852u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fa6qm"]
 texture = ExtResource("1_g1m40")
@@ -740,6 +741,27 @@ texture_region_size = Vector2i(32, 32)
 15:7/0/terrains_peering_bit/top_side = 0
 15:7/0/terrains_peering_bit/top_right_corner = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbdy4"]
+texture = ExtResource("2_k852u")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -13, 11, -9, 6, 1, 4, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 5, 13, 7, 5, 8, -7, 6, -16, -16, -16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -4, 16, -16, -16, -16, -2, -4)
+1:2/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -16, -16, -16, -13, -11, -9, -6, 1, -4, 16, 16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -5, 13, -6, 3, -4, -6, -6, -16, 16, -16)
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 16
@@ -750,3 +772,4 @@ terrain_set_0/terrain_0/color = Color(0.237178, 0.501455, 0.227895, 1)
 terrain_set_0/terrain_1/name = "Path"
 terrain_set_0/terrain_1/color = Color(0.560229, 0.441139, 0.320565, 1)
 sources/0 = SubResource("TileSetAtlasSource_fa6qm")
+sources/1 = SubResource("TileSetAtlasSource_nbdy4")
